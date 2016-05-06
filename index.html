@@ -6,75 +6,103 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 	<style type="text/css">
-	th {padding-right: 7%;}
+	/*th {padding-right: 7%;}
 	td {padding-right: 7%;}
-	tr {border-bottom: 2px solid grey;}
+	tr {border-bottom: 2px solid grey;}*/
 
-	img{width:100%;}
+	
+	.order {text-align:center;
+			}
+
+	.row.two {border:1px solid grey;margin-bottom:30px;		  
+			}
+
+	.title {text-align:center;padding:0px;
+			}
+
+	.product {text-align:center;border-right:1px solid rgba( 7,7,7,0.1);
+			 }
+
+	img {width:100%; 	
+		}
+
+	.row.three {margin-bottom:15px; border-bottom:3px outset rgba( 7,7,7,0.1) ;
+				}
+
+	h3 {font-size:17px;
+		}
+
+	h4 {font-size:17px; text-align:center; font-weight: normal; line-height: 155px;
+		}
 
 	</style>
 </head>
 <body ng-controller="myController">
-	<!-- Search: <input type="text" placeholder="Find your car.." ng-model="searchText.brand"/> -->
-	<!-- In the upper code I specify through which properties to search -->
-	Search by Brand: <input type="text" placeholder="Find brand" ng-model="searchText.brand"/>
-	Search by Model: <input type="text" placeholder="Find model" ng-model="searchText.model"/>
-	 <input type="checkbox" ng-model="exactMatch"/> Exact Match
-	</br>
-	</br>
-	Order By: <select ng-model="sortColumn">
-				<option value="brand">Brand</option>
-				<option value="year">Year</option>
-				<option value="engine">Engine Size</option>
-				<option value="mileage">Mileage</option>
-				<option value="price">Price low to high</option>
-				<option value="-price">Price high to low</option>
-			  </select>
 	
-		<div class="row two">
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-			Photos
+	<div class="container">
+		Search by Brand: <input type="text" placeholder="Find brand" ng-model="searchText.brand"/>
+		Search by Model: <input type="text" placeholder="Find model" ng-model="searchText.model"/>
+		 <input type="checkbox" ng-model="exactMatch"/> Exact Match
+		</br>
+		</br>
+		<div class="row one">
+			<div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 order">
+				Order By: <select ng-model="sortColumn">
+							<option value="brand">Brand</option>
+							<option value="year">Year</option>
+							<option value="engine">Engine Size</option>
+							<option value="mileage">Mileage</option>
+							<option value="price">Price low to high</option>
+							<option value="-price">Price high to low</option>
+						  </select>
 			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			Brand
-			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			Model
-			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			Year
-			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			Engine
-			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			Mileage
-			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			Price
-			</div>
-		</div><!--row two ending-->
-		<div class="row three"  ng-repeat="cars in merchandise | orderBy : sortColumn | filter:searchText : exactMatch">
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-			<img ng-src="{{cars.image}}" width="250px" height="150px"/>
-			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			{{cars.brand}}
-			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			{{cars.model}}
-			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			{{cars.year}}
-			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			E{{cars.engine}}
-			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			{{cars.mileage | number: "2"}}
-			</div>
-			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-			{{cars.price | currency}}
+		</div>
+		
+			<div class="row two">
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0 title">
+					<h3>Photos</h3>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-0 title">
+					<h3>Brand</h3>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-0 title">
+					<h3>Model</h3>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-0 title">
+					<h3>Year</h3>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-0 title">
+					<h3>Engine</h3>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-0 title">
+					<h3>Mileage</h3>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-0 title">
+					<h3>Price</h3>
+				</div>
+			</div><!--row two ending-->
+			<div class="row three"  ng-repeat="cars in merchandise | orderBy : sortColumn | filter:searchText : exactMatch">
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+					<img ng-src="{{cars.image}}" width="275px" height="175px"/>
+				</div>
+				<div class="col-lg-2 col-md-1 col-sm-1 col-xs-6 product">
+					<h4>{{cars.brand}}</h4>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 product">
+					<h4>{{cars.model}}</h4>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-2 col-xs-6 product">
+					<h4>{{cars.year}}</h4>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 product">
+					<h4>{{cars.engine}}</h4>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 product">
+					<h4>{{cars.mileage | number: "2"}}</h4>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 product">
+					<h4>{{cars.price | currency}}</h4>
+				</div>
 			</div>
 		</div>
 
@@ -93,6 +121,8 @@
 
 		<!-- <tbody>
 			Hardcoding it in the ng-repeat directive -->
+			<!-- Search: <input type="text" placeholder="Find your car.." ng-model="searchText.brand"/> -->
+	<!-- In the upper code I specify through which properties to search -->
 			<!-- <tr ng-repeat="cars in merchandise | orderBy : 'brand' : false">
 			<tr ng-repeat="cars in merchandise | orderBy : sortColumn | filter:searchText : exactMatch"> -->
 			<!-- 	<td><img ng-src="{{cars.image}}" width="250px" height="150px"/></td>
@@ -106,7 +136,7 @@
 		</tbody>
 	</table> -->
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
